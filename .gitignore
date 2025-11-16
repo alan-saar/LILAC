@@ -1,2 +1,7 @@
 openai_key.txt
+lilac-datasets.zip
+full_dataset/*
+result/*
+temp/*
+__pycache__/
 venv/*

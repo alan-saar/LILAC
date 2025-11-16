@@ -11,9 +11,9 @@ The detailed parsing time can be found in [detailed parsing time for RQ4](figure
 
 If you find our paper benefit your research, please kindly cite our related paper:
 
-- Zhihan Jiang, Jinyang Liu, Zhuangbin Chen, Yichen Li, Junjie Huang, Yintong Huo, Pinjia He, Jiazhen Gu, Michael R. Lyu. [LILAC: Log Parsing using LLMs with Adaptive Parsing Cache](https://arxiv.org/abs/2310.01796) FSE, 2024. 
+- Zhihan Jiang, Jinyang Liu, Zhuangbin Chen, Yichen Li, Junjie Huang, Yintong Huo, Pinjia He, Jiazhen Gu, Michael R. Lyu. [LILAC: Log Parsing using LLMs with Adaptive Parsing Cache](https://arxiv.org/abs/2310.01796) FSE, 2024.
 
-## Repository Organization 
+## Repository Organization
 
 ```
 ├── full_dataset/ # Please download and unzip full datasets into this directory
@@ -76,3 +76,11 @@ Please first download the large-scale datasets for log parsing in LogPub from [Z
 The parsed results and evaluation results will be saved in the `result/` directory.
 
 We have provided the saved evaluation metric files of LILAC with different settings in the directory of `result/`.
+
+- Simple Run with the paper default params
+  model gpt-3.5-turbo-0613 is deprecated and the endpoint is down since january/2025
+  [GPT-3.5-Turbo docs](https://platform.openai.com/docs/models/gpt-3.5-turbo)
+  ```bash
+  cd benchmark/evaluation
+  python LILAC_eval.py --shot 32 --example_size 3 --model gpt-3.5-turbo-0125 | tee output.txt
+  ```

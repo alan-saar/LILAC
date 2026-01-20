@@ -1,5 +1,6 @@
 #from openai import OpenAI # new api
 import openai
+import os
 
 # new api. Not supported by LILAC
 # client = OpenAI(api_key="SUA_API_KEY_AQUI")
@@ -16,10 +17,17 @@ import openai
 #  old openAI api, utilized by LILAC
 
 def get_openai_key(file_path):
-    with open(file_path, 'r') as file:
-        api_base = file.readline().strip()
-        key_str = file.readline().strip()
-    return api_base, key_str
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            api_base = file.readline().strip()
+            key_str = file.readline().strip()
+        return api_base, key_str
+    elif "OPENAI_KEY" in os.environ:
+        return "https://api.openai.com/v1", os.environ["OPENAI_KEY"]
+    else:
+        # This will raise FileNotFoundError as before if neither exists
+        with open(file_path, 'r') as file:
+            pass
 
 openai.api_base, openai.api_key = get_openai_key('openai_key.txt')
 
